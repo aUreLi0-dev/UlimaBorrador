@@ -6,6 +6,7 @@ import 'package:ulima_plus/components/footer/app_footer.dart';
 import 'package:ulima_plus/components/header/app_header.dart';
 import 'package:ulima_plus/pages/calculadora/calculadora_page.dart';
 import 'package:ulima_plus/pages/horario_prueba/horario_prueba.dart';
+import 'package:ulima_plus/pages/malla/malla_page.dart';
 import 'package:ulima_plus/services/auth_service.dart';
 
 import 'home_controller.dart';
@@ -25,13 +26,12 @@ class _HomePageState extends State<HomePage> {
 
   //aqui iran las paginas
   late final List<Widget> _pages = [
-    const Center(child: Text('Malla Curricular')),
-    CalculadoraPage(),
-    HorarioPage(),
+    const MallaPage(),
+    const CalculadoraPage(),
+    const HorarioPage(),
 
     // MODULO EXTRA A LOS ALUMNOS CON ROL 'Delegado'
-    if(user?.isDelegate ?? false)
-    const Center(child: Text('Delegado')),
+    if (user?.isDelegate ?? false) const Center(child: Text('Delegado')),
 
     const Center(child: Text('Perfil')),
   ];
@@ -53,7 +53,6 @@ class _HomePageState extends State<HomePage> {
 
           //CUERPO
           Expanded(child: _buildBody()),
-          
         ],
       ),
       //FOOTER
